@@ -1,0 +1,27 @@
+<mvc:View controllerName="app.manishk42.controller.createview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+    <Page id="idCreate" title="Create new mining record">
+	<content>	
+			<f:SimpleForm >
+
+<Label text="Location Id"></Label>
+<Input id="idLoc" width="250px"></Input>
+
+
+<Label text="Location Description"></Label>
+<Input id="idDesc" width="180px"></Input>
+<Label text="Mineral found"></Label>
+<Input id="idMin" width="180px"></Input>
+<Label text="Report"></Label>
+<Input id="idRep" width="180px"></Input>
+
+
+<Button text="Submit" width="180px" press="onSubmit"></Button>
+
+
+</f:SimpleForm>
+		</content>
+		
+	</Page>
+</mvc:View>

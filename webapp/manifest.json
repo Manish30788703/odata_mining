@@ -1,0 +1,190 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "app.manishk42",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.3",
+      "toolsId": "aab1b9cb-3c05-481b-85f0-9687eb5822a0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z9242_ODATAMINING_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "datamining-manage": {
+          "semanticObject": "datamining",
+          "action": "manage",
+          "title": "{{datamining-manage.flpTitle}}",
+          "subTitle": "{{datamining-manage.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.134.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "app.manishk42.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "MiningModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "app.manishk42.view",
+        "async": true,
+        "viewPath": "app.manishk42.view"
+      },
+      "routes": [
+        {
+          "name": "Routeminingview",
+          "pattern": ":?query:",
+          "target": [
+            "Targetminingview"
+          ]
+        },
+        {
+          "name": "RouteUserview",
+          "pattern": "user",
+          "target": [
+            "TargetUserview"
+          ]
+        },
+        {
+          "name": "RouteAdminview",
+          "pattern": "admin",
+          "target": [
+            "TargetAdminview"
+          ]
+        },
+        {
+          "name": "RouteCreateview",
+          "pattern": "create",
+          "target": [
+            "TargetCreateview"
+          ]
+        },
+        {
+          "name": "Routedetailview",
+          "pattern": "detail/{indexdetail}",
+          "target": [
+            "Targetdetailview"
+          ]
+        },
+        {
+          "name": "Routeupdateview",
+          "pattern": "update/{indexupdate}",
+          "target": [
+            "Targetupdateview"
+          ]
+        }
+      ],
+      "targets": {
+        "Targetminingview": {
+          "id": "miningview",
+          "name": "miningview"
+        },
+        "TargetUserview": {
+          "id": "userview",
+          "name": "userview"
+        },
+        "TargetAdminview": {
+          "id": "adminview",
+          "name": "adminview"
+        },
+        "TargetCreateview": {
+          "id": "createview",
+          "name": "createview"
+        },
+        "Targetdetailview": {
+          "id": "detailview",
+          "name": "detailview"
+        },
+        "Targetupdateview": {
+          "id": "updateview",
+          "name": "updateview"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "app.manishk42.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "appmanishk42"
+  }
+}

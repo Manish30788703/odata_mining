@@ -1,0 +1,39 @@
+<mvc:View controllerName="app.manishk42.controller.userview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="idUs" title="User view">
+			<OverflowToolbar>
+				<SearchField id="idSearch" liveChange="onSearch"/>
+			</OverflowToolbar>
+
+		
+   
+
+ 
+     <content>
+		    <List items="{/MININGSet}" id="idListCtrl" mode="SingleSelectMaster" selectionChange="onItemSelect">
+		    	<items>
+		    		<ObjectListItem  title="Location id:{LocationId}" 	>
+		    			<attributes>
+		    				
+		    				<ObjectAttribute text="{LocDesc}" title="Description"></ObjectAttribute>
+                          
+		    			</attributes>
+		    			<firstStatus>
+                               <ObjectStatus  title="{Mineral}" ></ObjectStatus> 
+		    					
+					</firstStatus>
+		    		
+		    		</ObjectListItem>
+		    		
+		    	</items>
+		    </List>
+		</content>
+
+
+
+
+
+
+    </Page>
+</mvc:View>

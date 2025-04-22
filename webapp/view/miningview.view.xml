@@ -1,0 +1,17 @@
+<mvc:View controllerName="app.manishk42.controller.miningview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <content>
+      <VBox  alignItems="Center" justifyContent="Center">
+        
+        <HBox  alignItems="Center" justifyContent="Center">
+           <Button text="Login as user" width="150px"  press="onUserLogin"></Button>
+          <Button text="Login as adminstrator" width="150px"  press="onAdminLogin"></Button>
+
+         
+        </HBox> 
+      </VBox>
+    </content>
+    </Page>
+</mvc:View>

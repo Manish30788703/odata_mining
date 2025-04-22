@@ -1,0 +1,29 @@
+<mvc:View controllerName="app.manishk42.controller.updateview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+    <Page id="idUpdate" title="Update mining record">
+	<content>	
+			<f:SimpleForm editable="true" >
+
+<Label text="Location Id" required="true"></Label>
+<Input id="idlUp" value="{MiningModel>LocationId}" width="250px"></Input>
+
+
+<Label text="Location Description"></Label>
+<Input id="idUpdes" value="{MiningModel>LocDesc}" width="180px"></Input>
+
+<Label text="Mineral found"></Label>
+<Input id="idUpmin" value="{MiningModel>Mineral}" width="180px"></Input>
+
+<Label text="Report"></Label>
+<Input id="idUprep" value="{MiningModel>Report}" width="180px"></Input>
+
+
+<Button text="Submit" width="180px" press="onUpdate"></Button>
+
+
+</f:SimpleForm>
+		</content>
+		
+	</Page>
+</mvc:View>

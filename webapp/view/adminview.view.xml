@@ -1,0 +1,60 @@
+<mvc:View controllerName="app.manishk42.controller.adminview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="idAd" title="Admin view">
+
+ <Table items="{MiningModel>/}" mode="SingleSelectMaster" selectionChange="onRowSelection">
+        <columns>
+           <Column>
+            <Text text="{i18n>LocationId}"></Text>
+           </Column>
+ 
+          
+           <Column >
+            <Text text="{i18n>LocDesc}"></Text>
+           </Column>
+ 
+           <Column >
+            <Text text="{i18n>Mineral}"></Text>
+           </Column>
+ 
+           <Column >
+            <Text text="{i18n>Report}"></Text>
+           </Column>
+
+		   <Column >
+            <Text text="action"></Text>
+           </Column>
+
+          
+ 
+        </columns>
+ 
+        <ColumnListItem >
+        <cells>
+        <Text text="{MiningModel>LocationId}"></Text>
+       
+        <Text text="{MiningModel>LocDesc}"></Text>
+        <Text text="{MiningModel>Mineral}"></Text>
+        <Text text="{MiningModel>Report}"></Text>
+
+        
+		 <Button icon="sap-icon://delete" press="onDelete"></Button>
+        </cells>
+       
+        </ColumnListItem>
+       
+     
+     </Table>
+			<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Create" press="onCreate"/>
+				
+			</OverflowToolbar>
+		</footer>
+         </Page>
+
+
+
+</mvc:View>

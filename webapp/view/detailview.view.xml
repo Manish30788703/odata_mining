@@ -1,0 +1,27 @@
+<mvc:View controllerName="app.manishk42.controller.detailview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+    <Page id="idDetail" title="Detail view">
+	<content>	
+			<f:SimpleForm editable="true">
+			<Label text="Report"></Label>
+<Text text="{MiningModel>LocationId}" id="idLoca"></Text>
+<Label text="Description"></Label>
+<Text text="{MiningModel>LocDesc}" id="idgDesc"></Text>
+<Label text="Mineral"></Label>
+<Text text="{MiningModel>Mineral}" id="idMineral"></Text>
+<Label text="Report"></Label>
+<Text text="{MiningModel>Report}" id="idREp"></Text>
+
+
+
+
+
+<Button text="Edit" width="180px" press="onEdit"></Button>
+
+
+</f:SimpleForm>
+		</content>
+		
+	</Page>
+</mvc:View>
