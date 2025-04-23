@@ -1,8 +1,12 @@
 sap.ui.define([
     "./basecontroller",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/Sorter"
+
    
-], (basecontroller,MessageBox) => {
+], (basecontroller, MessageBox, Filter,FilterOperator,Sorter) => {
     "use strict";
 
     return basecontroller.extend("app.manishk42.controller.adminview", {
@@ -64,6 +68,19 @@ sap.ui.define([
                     console.log(error)
                 }
             })
+        },
+        onSearch: function(oEvent){
+            var searchString=oEvent.getParameter("query")||oEvent.getParameter("newValue");
+            var oName=new Filter("Mineral", FilterOperator.Contains, searchString);
+            var oAvail=new Filter("LocationId", FilterOperator.Contains, searchString);
+            var aFilter=[oName, oAvail];
+            var mainFilter=new Filter({
+                filters:aFilter,
+                and:false
+            });
+            var oList=this.getView().byId("idListCtrl");
+            var oBinding=oList.getBinding("items");
+            oBinding.filter(mainFilter);
         },
 
         onRowSelection:function(oEvent){

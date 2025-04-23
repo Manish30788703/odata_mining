@@ -1,17 +1,22 @@
 <mvc:View controllerName="app.manishk42.controller.adminview"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="idAd" title="Admin view">
+    <Page id="idAd" title="Mining Details">
+    <subHeader>
+            <OverflowToolbar>
+                <SearchField search="onSearch" liveChange="onSearch"/>
+            </OverflowToolbar>
+        </subHeader>
 
- <Table items="{MiningModel>/}" mode="SingleSelectMaster" selectionChange="onRowSelection">
+ <Table id="idListCtrl" items="{MiningModel>/}" mode="SingleSelectMaster" selectionChange="onRowSelection">
         <columns>
            <Column>
-            <Text text="{i18n>LocationId}"></Text>
+            <Text text="{i18n>Location Id}"></Text>
            </Column>
  
           
            <Column >
-            <Text text="{i18n>LocDesc}"></Text>
+            <Text text="{i18n>Location Description}"></Text>
            </Column>
  
            <Column >
@@ -23,7 +28,7 @@
            </Column>
 
 		   <Column >
-            <Text text="action"></Text>
+            <Text text="Action"></Text>
            </Column>
 
           

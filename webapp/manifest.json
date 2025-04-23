@@ -107,24 +107,18 @@
       },
       "routes": [
         {
-          "name": "Routeminingview",
-          "pattern": ":?query:",
+          "name": "RouteAdminview",
+          "pattern": "",
           "target": [
-            "Targetminingview"
+            "TargetAdminview"
           ]
         },
+
         {
           "name": "RouteUserview",
           "pattern": "user",
           "target": [
             "TargetUserview"
-          ]
-        },
-        {
-          "name": "RouteAdminview",
-          "pattern": "admin",
-          "target": [
-            "TargetAdminview"
           ]
         },
         {
@@ -150,17 +144,15 @@
         }
       ],
       "targets": {
-        "Targetminingview": {
-          "id": "miningview",
-          "name": "miningview"
-        },
-        "TargetUserview": {
-          "id": "userview",
-          "name": "userview"
-        },
+        
         "TargetAdminview": {
           "id": "adminview",
           "name": "adminview"
+        },
+    
+        "TargetUserview": {
+          "id": "userview",
+          "name": "userview"
         },
         "TargetCreateview": {
           "id": "createview",
