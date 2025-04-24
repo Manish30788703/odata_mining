@@ -2,13 +2,20 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="idAd" title="Mining Details">
+    <headerContent>   
+     <Button icon="sap-icon://sort" press="onSort"/>
+     </headerContent>
+
     <subHeader>
             <OverflowToolbar>
                 <SearchField search="onSearch" liveChange="onSearch"/>
             </OverflowToolbar>
         </subHeader>
-
  <Table id="idListCtrl" items="{MiningModel>/}" mode="SingleSelectMaster" selectionChange="onRowSelection">
+ <!-- <headerContent>
+                <Button icon="sap-icon://sort" press="onSort"/>
+                <Button icon="sap-icon://action" tooltip="Share" press="onAllDetailsView"/>
+        </headerContent> -->
         <columns>
            <Column>
             <Text text="{i18n>Location Id}"></Text>

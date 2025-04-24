@@ -11,6 +11,12 @@ sap.ui.define([
 
     return basecontroller.extend("app.manishk42.controller.adminview", {
         onInit() {
+            let oRouter = this.getOwnerComponent().getRouter();
+            let oRoute = oRouter.getRoute("RouteAdminview");
+            oRoute.attachPatternMatched(this._onPatternMatched, this);
+        },
+ 
+        _onPatternMatched: function () {
             this._getData();
         },
 
@@ -43,7 +49,7 @@ sap.ui.define([
                  success: (resp) => {
                      MessageBox.success("Record Deleted",{
                          onClose: function(){
-                             this.onInit()
+                             this._onPatternMatched();
                          }.bind(this)
                      });
                  },
@@ -58,8 +64,8 @@ sap.ui.define([
             oModel.read(entity,{
                 success:(odata,resp)=>{
 
-                    let JModel=this.getOwnerComponent().getModel("MiningModel")
-                    JModel.setData(odata.results)
+                    var oModelData = new sap.ui.model.json.JSONModel(odata.results);
+                    this.getView().setModel(oModelData, "MiningModel");
                     // let oModelJs=new sap.ui.model.json.JSONModel(odata)
                     // this.getView().setModel(oModelJs,"MiningModel")
                     
@@ -93,6 +99,17 @@ sap.ui.define([
                 indexdetail:index
             })
 
+        },
+        onSort: function () {
+            if (!this.bDescending) {
+                this.bDescending = false;
+            }
+ 
+            var oSorter = new Sorter("LocationId", this.bDescending);
+            var oList = this.getView().byId("idListCtrl");
+            var oBinding = oList.getBinding("items");
+            oBinding.sort(oSorter);
+            this.bDescending = !this.bDescending;
         }
     });
 });

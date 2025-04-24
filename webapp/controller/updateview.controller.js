@@ -7,9 +7,27 @@ sap.ui.define([
 
     return basecontroller.extend("app.manishk42.controller.updateview", {
         onInit() {
-            let oRouter=this.getRouter()
-            oRouter.attachRoutePatternMatched(this._onMatched,this)
+            let oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this._onMatched, this);
+            let oRoute = oRouter.getRoute("Routeupdateview");
+            oRoute.attachPatternMatched(this._onPatternMatched, this);
         },
+        _onPatternMatched: function () {
+            this._getData();
+        },
+
+        _getData: function () {
+            let enititySet = `/dataminingSet`;
+            let oModel = this.getOwnerComponent().getModel();
+            oModel.read(enititySet, {
+                success: (oData, response) => {
+                    var oModelData = new sap.ui.model.json.JSONModel(oData.results);
+                    this.getView().setModel(oModelData, "MiningModel");
+                },
+                error: () => { }
+            })
+        },
+
 
         _onMatched:function(oEvent){
             let index=oEvent.getParameter("arguments").indexupdate

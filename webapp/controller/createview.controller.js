@@ -1,12 +1,23 @@
 sap.ui.define([
     "./basecontroller",
+    "../validate/validate",
     "sap/m/MessageBox"
    
-], (basecontroller,MessageBox) => {
+], (basecontroller,validate,MessageBox) => {
     "use strict";
 
     return basecontroller.extend("app.manishk42.controller.createview", {
         onInit() {
+            let oView = this.getView();
+            let fieldIds = ["idLoc", "idDesc", "idMin", "idRep"];
+            fieldIds.forEach(fieldId => {
+            oView.byId(fieldId).attachChange(this.onSetNone, this);
+            });
+        },
+ 
+        onToMining: function(){
+            var oRouter=this.getOwnerComponent().getRouter()
+            oRouter.navTo("RouteAdminview")
         },
 
         onSubmit:function(){
@@ -29,7 +40,21 @@ sap.ui.define([
                 // let vDate=new Date(sFld).getTime()
     
                 // let fDate="\/Date("+vDate+")\/"
-    
+                let fields = [
+                    {id:"idLoc", value:sLocId},
+                    {id:"idDesc", value:sDesc},
+                    {id:"idMin", value:sMin},
+                    {id:"idRep", value:sRep}
+                 ]
+     
+                 let validationResult = validate.validateFields(fields);
+                 if (validationResult !== true) {
+                    validationResult.forEach(fieldId => {
+                        this.getView().byId(fieldId).setValueState("Error");
+                    });
+                    return;
+                }
+
                 let payLoad={
                     "LocationId":sLocId,
                 
@@ -48,19 +73,20 @@ sap.ui.define([
     
              
                 //method
-              let that=this
+              var that=this
                 oModel.create(entity,payLoad,{
                     success:function(){
                         MessageBox.success("record created",{
                             onClose:function(){
-                                var oRouter=that.getRouter()
-                oRouter.navTo("RouteAdminview")
-                oCarrId.setValue("")
-                oConnId.setValue("")
-                oFld.setValue("")
-                oBk.setValue("")
-                oOrd.setValue("")
-                            }
+                                that._clearFields();
+                                var oRouter=that.getOwnerComponent().getRouter()
+                 oRouter.navTo("RouteAdminview")
+                // oCarrId.setValue("")
+                // oConnId.setValue("")
+                // oFld.setValue("")
+                // oBk.setValue("")
+                // oOrd.setValue("")
+                            }.bind(this)
                         
                     })
                     
